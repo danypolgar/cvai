@@ -1,0 +1,10 @@
+[project]
+name = "cvai"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "python-dotenv>=1.2.4",
+    "roboflow>=1.7.3",
+    "ultralytics>=8.4.212",
+    "wandb>=0.31.0",
+]

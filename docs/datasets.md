@@ -1,5 +1,21 @@
 # Dataset Research
 
+## Our dataset mirror (Google Drive)
+
+Downloaded 2026-11-14, zipped YOLO-format copies of the Roboflow datasets below:
+<https://drive.google.com/drive/folders/1lVeOMSv7EYaDcxkKybIDiWqnKO7IPq_x?usp=sharing>
+
+Unzip into `data/roboflow/` (or just run `src/cvai/download_data.py` with your
+own Roboflow key). Actual downloaded counts:
+
+| Folder | Images | Size |
+|---|---|---|
+| `cat-with-prey-detection-11` | 2523 | 213 MB |
+| `safsd-1` | 1551 | 66 MB |
+| `prey-detection-v2-1` | 302 | 7.4 MB |
+
+~4.4k images total.
+
 ## Prey-specific datasets (the hard-to-find part)
 
 All the usable "cat with prey in mouth" data lives on **Roboflow Universe**

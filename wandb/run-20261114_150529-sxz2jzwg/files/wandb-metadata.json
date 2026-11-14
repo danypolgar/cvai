@@ -1,0 +1,14 @@
+{
+  "os":  "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+  "python":  "CPython 3.14.8",
+  "startedAt":  "2026-11-14T14:05:29.701804Z",
+  "program":  "<python with no main file>",
+  "git":  {
+    "remote":  "git@github.com:danypolgar/cvai.git",
+    "commit":  "11fc3ac3e0dbbd878f016d501ca1368e58a52714"
+  },
+  "root":  "/Users/zayden/Dev/hslu/cvai",
+  "host":  "Mac.localdomain",
+  "executable":  "/Users/zayden/Dev/hslu/cvai/.venv/bin/python3",
+  "writerId":  "01a1da60-a7d9-70c7-a132-af17f1f1bc5c"
+}

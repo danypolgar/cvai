@@ -29,6 +29,40 @@ an alert sent before the prey ends up in the living room.
 - [catflap-prey-detector](https://github.com/fl2o/catflap-prey-detector) -
   YOLO11n + prey classifier on RPi 5 with IR camera
 
+## Quickstart
+
+```bash
+uv sync                                     # install deps
+cp .env.example .env                        # add your free Roboflow API key
+uv run python src/cvai/download_data.py     # fetch datasets -> data/roboflow/
+uv run python src/cvai/train.py             # fine-tune YOLO11n (COCO-pretrained)
+```
+
+We fine-tune pretrained models (transfer learning), we do not train from
+scratch: ~2-3k prey images is far too little for that. See
+`docs/datasets.md` for the dataset research.
+
+### GPU training on Modal
+
+Local MPS training works but is slow (~3.5 min/epoch). The same run on a
+Modal A10G takes ~10s/epoch (30 epochs in ~6 min, ~$0.30):
+
+```bash
+modal volume put cvai-data data/roboflow /roboflow   # once
+modal run src/cvai/modal_train.py                    # needs .env with W&B key
+```
+
+### Experiment tracking
+
+All runs log to W&B: <https://forge.coreweave.com/wandb/cvai-cat-prey/cvai-katzentuer>
+
+Baseline result (`baseline-yolo11n-a10g`, YOLO11n, 30 epochs, 640px):
+**mAP50 0.954, mAP50-95 0.765, precision 0.937, recall 0.919** on the
+cat-with-prey-detection val split.
+
 ## Structure
 
+- `src/cvai/` - download & training code
+- `docs/` - research notes
+- `data/`, `models/` - datasets & weights (git-ignored)
 - `temp/` - course material & scratch files (git-ignored)
