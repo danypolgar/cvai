@@ -1,0 +1,26 @@
+_wandb:
+    value:
+        cli_version: 0.31.0
+        e:
+            01a1da60-a7d9-70c7-a132-af17f1f1bc5c:
+                executable: /Users/zayden/Dev/hslu/cvai/.venv/bin/python3
+                git:
+                    commit: 11fc3ac3e0dbbd878f016d501ca1368e58a52714
+                    remote: git@github.com:danypolgar/cvai.git
+                host: Mac.localdomain
+                os: macOS-26.7.2-arm64-arm-64bit-Mach-O
+                program: <python with no main file>
+                python: CPython 3.14.8
+                root: /Users/zayden/Dev/hslu/cvai
+                startedAt: "2026-11-14T14:05:29.701804Z"
+                writerId: 01a1da60-a7d9-70c7-a132-af17f1f1bc5c
+        m: []
+        python_version: 3.14.8
+        t:
+            "3":
+                - 2
+                - 13
+            "4": 3.14.8
+            "5": 0.31.0
+            "12": 0.31.0
+            "13": darwin-arm64

@@ -42,6 +42,24 @@ We fine-tune pretrained models (transfer learning), we do not train from
 scratch: ~2-3k prey images is far too little for that. See
 `docs/datasets.md` for the dataset research.
 
+### GPU training on Modal
+
+Local MPS training works but is slow (~3.5 min/epoch). The same run on a
+Modal A10G takes ~10s/epoch (30 epochs in ~6 min, ~$0.30):
+
+```bash
+modal volume put cvai-data data/roboflow /roboflow   # once
+modal run src/cvai/modal_train.py                    # needs .env with W&B key
+```
+
+### Experiment tracking
+
+All runs log to W&B: <https://forge.coreweave.com/wandb/cvai-cat-prey/cvai-katzentuer>
+
+Baseline result (`baseline-yolo11n-a10g`, YOLO11n, 30 epochs, 640px):
+**mAP50 0.954, mAP50-95 0.765, precision 0.937, recall 0.919** on the
+cat-with-prey-detection val split.
+
 ## Structure
 
 - `src/cvai/` - download & training code
