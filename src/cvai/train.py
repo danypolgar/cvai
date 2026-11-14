@@ -11,10 +11,12 @@ from scratch - see README "Key challenges".
 import argparse
 from pathlib import Path
 
-from ultralytics import YOLO
+from dotenv import load_dotenv
+from ultralytics import YOLO, settings
 
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_DATA = ROOT / "data" / "roboflow" / "cat-with-prey-detection-11" / "data.yaml"
+WANDB_PROJECT = "cvai-katzentuer"
 
 
 def main() -> None:
@@ -24,7 +26,16 @@ def main() -> None:
     p.add_argument("--epochs", type=int, default=30)
     p.add_argument("--imgsz", type=int, default=640)
     p.add_argument("--batch", type=int, default=16)
+    p.add_argument("--name", default="prey-yolo", help="run name (wandb + models/)")
+    p.add_argument("--no-wandb", action="store_true", help="disable W&B logging")
     args = p.parse_args()
+
+    load_dotenv()  # for WANDB_API_KEY
+    settings.update({"wandb": not args.no_wandb})
+    if not args.no_wandb:
+        import os
+
+        os.environ.setdefault("WANDB_PROJECT", WANDB_PROJECT)
 
     data = Path(args.data)
     if not data.exists():
@@ -39,7 +50,7 @@ def main() -> None:
         imgsz=args.imgsz,
         batch=args.batch,
         project=str(ROOT / "models"),
-        name="prey-yolo",
+        name=args.name,
         exist_ok=True,
     )
     metrics = model.val()
