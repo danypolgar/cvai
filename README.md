@@ -29,6 +29,22 @@ an alert sent before the prey ends up in the living room.
 - [catflap-prey-detector](https://github.com/fl2o/catflap-prey-detector) -
   YOLO11n + prey classifier on RPi 5 with IR camera
 
+## Quickstart
+
+```bash
+uv sync                                     # install deps
+cp .env.example .env                        # add your free Roboflow API key
+uv run python src/cvai/download_data.py     # fetch datasets -> data/roboflow/
+uv run python src/cvai/train.py             # fine-tune YOLO11n (COCO-pretrained)
+```
+
+We fine-tune pretrained models (transfer learning), we do not train from
+scratch: ~2-3k prey images is far too little for that. See
+`docs/datasets.md` for the dataset research.
+
 ## Structure
 
+- `src/cvai/` - download & training code
+- `docs/` - research notes
+- `data/`, `models/` - datasets & weights (git-ignored)
 - `temp/` - course material & scratch files (git-ignored)
